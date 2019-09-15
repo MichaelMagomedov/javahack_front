@@ -1,0 +1,71 @@
+<div class="animated fadeIn" ng-controller="listController">
+    <div class="row">
+        <div class="card">
+            <div class="card-body pt-2">
+                <div class="row">
+                    <select class="form-control col-3 mt-3 ml-3"
+                            ng-options="okpd.id as okpd.label for okpd in okpds"
+                            ng-model="selectedOkpds">
+                    </select>
+                    <rzslider class="col-3 ml-4" rz-slider-model="price"
+                    ></rzslider>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-center" ng-if="!list">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="animated fadeIn" ng-repeat="item in list |  filter:{ tillDate: ''}" ng-if="list">
+            <div class="card">
+                <div class="row">
+                    <div class="card-body pb-0 d-flex col-6 align-items-center">
+                        <i class="fa fa-user p-4 font-2xl"></i>
+                        <div>
+                            <div class="text-muted text-uppercase font-weight-bold t-name">Компания:</div>
+                            <div class="text-lowercase">
+                                {{ item.organization }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pb-0 d-flex col-6 align-items-center">
+                        <i class="fa fa-adn p-4 font-2xl"></i>
+                        <div>
+                            <div class="text-muted text-uppercase font-weight-bold t-name">Услуга:</div>
+                            <div class="text-lowercase">
+                                {{ item.lotItems[0].name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-0 d-flex col-6 align-items-center">
+                        <i class="fa fa-money p-4 font-2xl"></i>
+                        <div>
+                            <div class="text-muted text-uppercase font-weight-bold t-name">Цена:</div>
+                            <div class="text-lowercase">
+                                {{ item.lotItems[0].firstPrice }} руб.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-0 d-flex col-6 align-items-center">
+                        <i class="fa fa-times-circle p-4 font-2xl"></i>
+                        <div>
+                            <div class="text-muted text-uppercase font-weight-bold t-name">Окончание приема
+                                заявок:
+                            </div>
+                            <div class="text-lowercase">
+                                {{ moment.unix(item.tillDate / 1000).format("MM.DD.YYYY") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-2 pl-4 pt-1 pb-4">
+                    <button class="btn btn-square btn-warning" ui-sref="app.item({ item: JSON.stringify(item) })" type="button">
+                        Подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
