@@ -1,4 +1,4 @@
-angular.module('app').controller('listController', ['$http', '$scope', '$timeout', function ($http, $scope, $timeout) {
+angular.module('app').controller('listController', ['$http', '$scope', '$timeout', '$state', function ($http, $scope, $timeout, $state) {
     $scope.list = undefined;
     $scope.price = 32000;
     $scope.selectedOkpds = 8874016;
@@ -437,12 +437,15 @@ angular.module('app').controller('listController', ['$http', '$scope', '$timeout
             }, 2000)
         })
     }
+    $scope.goToItem = function (item) {
+        $state.go('app.item', {item: item})
+    }
     $scope.requestOkpds();
     $scope.$watch('selectedOkpds', function () {
         $scope.list = undefined;
         $scope.requestOkpds();
     })
-    $scope.$on('slideEnded', function() {
+    $scope.$on('slideEnded', function () {
         $scope.list = undefined;
         $scope.requestOkpds();
     })

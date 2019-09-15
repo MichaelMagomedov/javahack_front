@@ -4,26 +4,40 @@
             <div class="card">
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Организация</li>
-                        <li class="list-group-item">Услуга</li>
-                        <li class="list-group-item">Окончание приёма заявок</li>
-                        <li class="list-group-item">Цена</li>
-                        <li class="list-group-item">Тип проведения</li>
-                        <li class="list-group-item">Подпись организации</li>
+                        <li class="list-group-item"><b>Организация:</b> {{ item.organization }}</li>
+                        <li class="list-group-item"><b>Услуга:</b> {{ item.lotItems[0].name }}</li>
+                        <li class="list-group-item">
+                            <b>Окончание приёма заявок:</b>
+                            {{ moment.unix(item.tillDate / 1000).format("MM.DD.YYYY") }}
+                        </li>
+                        <li class="list-group-item">
+                            <b>Цена:</b>
+                            {{ item.lotItems[0].firstPrice }} руб.
+                        </li>
+                        <li class="list-group-item"><b>Тип проведения:</b> {{ item.provider}}</li>
+                        <li class="list-group-item"><b>Подпись организации</b>
+                            <a target="_blank" href="{{ item.signViewUrl }}">Подпись</a>
+                        </li>
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-5 py-4">
-                                    Обеспечение от райфазен
+                                    <img src="../img/favicon.png" width="32px">
+                                    <b>Обеспечение от райфазен:</b>
                                 </div>
-                                <rzslider class="col-7" rz-slider-model="100"></rzslider>
+                                <div class="col-7">
+                                    <rzslider rz-slider-model="ob"></rzslider>
+                                </div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-5 py-4">
-                                    Доступный кредитный лимит
+                                    <img src="../img/favicon.png" width="32px">
+                                    <b>Доступный кредитный лимит:</b>
                                 </div>
-                                <rzslider class="col-7" rz-slider-model="1000"></rzslider>
+                                <div class="col-7">
+                                    <rzslider rz-slider-model="cred"></rzslider>
+                                </div>
                             </div>
                         </li>
                     </ul>
