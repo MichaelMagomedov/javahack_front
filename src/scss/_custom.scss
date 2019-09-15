@@ -34,6 +34,9 @@
     font-size: 16px;
   }
 }
+.rzslider .rz-pointer:after{
+  background-color: $yellow!important;
+}
 
 @keyframes lds-ripple {
   0% {

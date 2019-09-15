@@ -2,6 +2,14 @@ angular.module('app').controller('listController', ['$http', '$scope', '$timeout
     $scope.list = undefined;
     $scope.price = 32000;
     $scope.selectedOkpds = 8874016;
+    $scope.sliderOption = {
+        getPointerColor: function () {
+            return '#000';
+        },
+        getSelectionBarColor: function () {
+            return '#fce844'
+        }
+    }
     $scope.okpds = [
         {
             "value": 8874011,

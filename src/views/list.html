@@ -7,8 +7,12 @@
                             ng-options="okpd.id as okpd.label for okpd in okpds"
                             ng-model="selectedOkpds">
                     </select>
-                    <rzslider class="col-3 ml-4" rz-slider-model="price"
-                    ></rzslider>
+                    <div style="width: 250px;">
+                        <rzslider class="ml-4"
+                                  rz-slider-options="sliderOption"
+                                  rz-slider-model="price"
+                        ></rzslider>
+                    </div>
                 </div>
             </div>
         </div>

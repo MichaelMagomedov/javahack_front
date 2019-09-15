@@ -12748,6 +12748,9 @@ hr.transparent {
   .card .t-name {
     font-size: 16px; }
 
+.rzslider .rz-pointer:after {
+  background-color: #fed341 !important; }
+
 @-webkit-keyframes lds-ripple {
   0% {
     top: 28px;

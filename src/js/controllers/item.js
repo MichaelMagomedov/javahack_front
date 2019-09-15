@@ -1,6 +1,13 @@
 angular.module('app').controller('ItemController', ['$http', '$scope', '$timeout', '$stateParams', '$state',
     function ($http, $scope, $timeout, $stateParams, $state) {
-
+        $scope.sliderOption = {
+            getPointerColor: function () {
+                return '#000';
+            },
+            getSelectionBarColor: function () {
+                return '#fce844'
+            }
+        }
         $scope.item = $stateParams.item;
         if (!$scope.item) {
             $state.go('app.list')
