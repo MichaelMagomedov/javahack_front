@@ -9,5 +9,12 @@ angular.module('app').controller('ItemController', ['$http', '$scope', '$timeout
         $scope.cred = $scope.item.lotItems[0].firstPrice;
         console.log($scope.item);
         $scope.moment = moment;
+        $scope.accept = function () {
+            sweetAlert({
+                icon: "success",
+            }).then(function () {
+                $state.go('app.list')
+            });
+        }
     }
 ]);
